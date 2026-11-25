@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TCCLume.Views.ResumoMensalPage"
+    BackgroundColor="#070812"
+    Title="Resumo Mensal">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="20">
+
+            <!-- TOPO -->
+            <Grid ColumnDefinitions="Auto,*"
+                  Margin="0,20,0,0">
+
+                <!-- MENU -->
+                <Button
+                    Text="☰"
+                    FontSize="28"
+                    BackgroundColor="Transparent"
+                    TextColor="#F2C94C"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Clicked="MenuButton_Clicked"/>
+
+                <!-- TÍTULO -->
+                <Label
+                    Grid.Column="1"
+                    Text="Resumo Mensal"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    HorizontalOptions="Center"/>
+            </Grid>
+
+            <!-- RECEITA -->
+                    <Frame
+                        BackgroundColor="#121424"
+                        BorderColor="#2A2D3E"
+                        CornerRadius="18">
+
+                    <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Receita"
+                        TextColor="#F2C94C"
+                        FontSize="20"
+                        FontAttributes="Bold"/>
+
+                    <Entry
+                        x:Name="IncomeTitleEntry"
+                        Placeholder="Título"/>
+
+                    <Entry
+                        x:Name="IncomeValueEntry"
+                        Placeholder="Valor"
+                        Keyboard="Numeric"/>
+
+                    <Picker
+                        x:Name="IncomeCategoryPicker"
+                        Title="Selecione a categoria"
+                        TextColor="White"
+                        TitleColor="#A8AFB5"
+                        BackgroundColor="#1A1C2B"/>
+
+                    <Button
+                        Text="Adicionar Receita"
+                        BackgroundColor="#F2C94C"
+                        TextColor="Black"
+                        Clicked="AddIncome_Clicked"/>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- DESPESA -->
+                    <Frame
+                        BackgroundColor="#121424"
+                        BorderColor="#2A2D3E"
+                        CornerRadius="18">
+
+                    <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Despesa"
+                        TextColor="#FF5B5B"
+                        FontSize="20"
+                        FontAttributes="Bold"/>
+
+                    <Entry
+                        x:Name="ExpenseTitleEntry"
+                        Placeholder="Título"/>
+
+                    <Entry
+                        x:Name="ExpenseValueEntry"
+                        Placeholder="Valor"
+                        Keyboard="Numeric"/>
+
+                    <Picker
+                        x:Name="ExpenseCategoryPicker"
+                        Title="Selecione a categoria"
+                        TextColor="White"
+                        TitleColor="#A8AFB5"
+                        BackgroundColor="#1A1C2B"/>
+
+                    <Button
+                        Text="Adicionar Despesa"
+                        BackgroundColor="#FF5B5B"
+                        TextColor="White"
+                        Clicked="AddExpense_Clicked"/>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- LISTA -->
+            <CollectionView
+                x:Name="TransactionsCollection">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Frame
+                Margin="0,5"
+                Padding="15"
+                BackgroundColor="#121424"
+                BorderColor="#2A2D3E"
+                CornerRadius="15">
+
+                            <Grid
+                    ColumnDefinitions="*,Auto"
+                    RowDefinitions="Auto,Auto,Auto"
+                    ColumnSpacing="15"
+                    RowSpacing="6">
+
+                                <!-- TÍTULO -->
+                                <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="{Binding Titulo}"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold"/>
+
+                                <!-- VALOR -->
+                                <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding Valor, StringFormat='R$ {0:F2}'}"
+                        TextColor="#F2C94C"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="End"/>
+
+                                <!-- CATEGORIA -->
+                                <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="{Binding Categoria}"
+                        FontSize="13"
+                        TextColor="#F2C94C"
+                        FontAttributes="Bold"/>
+
+                                <!-- DATA -->
+                                <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="{Binding Data}"
+                        FontSize="12"
+                        TextColor="#A8AFB5"/>
+
+                                <!-- BOTÕES -->
+                                <HorizontalStackLayout
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Spacing="6"
+                        VerticalOptions="End">
+
+                                    <!-- EDITAR -->
+                                    <Button
+                            Text="Editar"
+                            FontSize="11"
+                            BackgroundColor="#F2C94C"
+                            TextColor="Black"
+                            CornerRadius="8"
+                            Padding="10,5"
+                            Clicked="EditTransaction_Clicked"
+                            CommandParameter="{Binding Id}"/>
+
+                                    <!-- EXCLUIR -->
+                                    <Button
+                            Text="Excluir"
+                            FontSize="11"
+                            BackgroundColor="#FF5B5B"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Padding="10,5"
+                            Clicked="DeleteTransaction_Clicked"
+                            CommandParameter="{Binding Id}"/>
+
+                                </HorizontalStackLayout>
+
+                            </Grid>
+
+                        </Frame>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

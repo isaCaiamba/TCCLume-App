@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TCCLume.Views.ChatPage"
+    BackgroundColor="#070812"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- ================================================= -->
+        <!-- CABEÇALHO -->
+        <!-- ================================================= -->
+
+        <Grid
+            Grid.Row="0"
+            Padding="18,40,18,10"
+            ColumnDefinitions="Auto,*,Auto">
+
+            <!-- MENU -->
+            <Button
+                Grid.Column="0"
+                Text="☰"
+                FontSize="25"
+                BackgroundColor="Transparent"
+                TextColor="#F2C94C"
+                WidthRequest="45"
+                HeightRequest="45"
+                Clicked="MenuButton_Clicked"/>
+
+
+            <!-- LOGO / LUME -->
+            <VerticalStackLayout
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                Spacing="0">
+
+                <Image
+                    Source="lume_mascote.png"
+                    HeightRequest="75"
+                    WidthRequest="75"
+                    HorizontalOptions="Center"/>
+
+                <Label
+                    Text="Lume"
+                    FontSize="21"
+                    FontAttributes="Bold"
+                    TextColor="#F2C94C"
+                    HorizontalTextAlignment="Center"/>
+
+            </VerticalStackLayout>
+
+
+            <!-- STATUS -->
+            <VerticalStackLayout
+                Grid.Column="2"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Spacing="2">
+
+                <Label
+                    Text="●"
+                    FontSize="13"
+                    TextColor="#62D68B"
+                    HorizontalTextAlignment="Center"/>
+
+                <Label
+                    Text="online"
+                    FontSize="9"
+                    TextColor="#8E93A3"/>
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+
+        <!-- ================================================= -->
+        <!-- ÁREA DE MENSAGENS -->
+        <!-- ================================================= -->
+
+        <ScrollView
+            x:Name="MessagesScrollView"
+            Grid.Row="1"
+            Padding="16,5,16,10">
+
+            <VerticalStackLayout
+                x:Name="MessagesLayout"
+                Spacing="12">
+
+                <!-- MENSAGEM INICIAL DO LUME -->
+
+                <Grid
+                    HorizontalOptions="Start"
+                    MaximumWidthRequest="320">
+
+                    <Frame
+                        BackgroundColor="#121424"
+                        BorderColor="#2A2D3E"
+                        CornerRadius="18"
+                        Padding="15"
+                        HasShadow="False">
+
+                        <VerticalStackLayout
+                            Spacing="6">
+
+                            <Label
+                                Text="Lume ✨"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#F2C94C"/>
+
+                            <Label
+                                Text="Olá! 👋&#10;&#10;Estou aqui para ajudar você a organizar suas finanças. Pode me perguntar sobre seus gastos, receitas ou metas."
+                                FontSize="15"
+                                TextColor="White"
+                                LineBreakMode="WordWrap"/>
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+                </Grid>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+
+        <!-- ================================================= -->
+        <!-- CAMPO DE DIGITAÇÃO -->
+        <!-- ================================================= -->
+
+        <Grid
+            Grid.Row="2"
+            Padding="15,8,15,20">
+
+            <Frame
+                BackgroundColor="#121424"
+                BorderColor="#2A2D3E"
+                CornerRadius="25"
+                Padding="4"
+                HasShadow="False">
+
+                <Grid
+                    ColumnDefinitions="*,Auto"
+                    ColumnSpacing="5">
+
+                    <Entry
+                        x:Name="MessageEntry"
+                        Grid.Column="0"
+                        Placeholder="Digite uma mensagem..."
+                        PlaceholderColor="#777D8D"
+                        TextColor="White"
+                        FontSize="15"
+                        BackgroundColor="Transparent"
+                        Margin="12,0,5,0"
+                        ReturnType="Send"
+                        Completed="MessageEntry_Completed"/>
+
+
+                    <Button
+                        x:Name="SendButton"
+                        Grid.Column="1"
+                        Text="➤"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        CornerRadius="24"
+                        BackgroundColor="#F2C94C"
+                        TextColor="Black"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        Clicked="EnviarMensagem_Clicked"/>
+
+                </Grid>
+
+            </Frame>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

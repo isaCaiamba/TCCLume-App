@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TCCLume.Views.ArtigoPage"
+             BackgroundColor="#070812"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid
+            Padding="20,15"
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="12">
+
+            <Button
+                Text="←"
+                FontSize="28"
+                TextColor="#F2C94C"
+                BackgroundColor="Transparent"
+                Padding="0"
+                Clicked="Voltar_Clicked"/>
+
+            <Label
+                Grid.Column="1"
+                Text="Blog Lume"
+                FontSize="24"
+                FontAttributes="Bold"
+                TextColor="#F2C94C"
+                VerticalOptions="Center"/>
+
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+
+            <VerticalStackLayout
+                Padding="24,10,24,30"
+                Spacing="18">
+
+                <Label
+                    x:Name="CategoriaLabel"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    TextColor="#F2C94C"/>
+
+                <Label
+                    x:Name="TituloLabel"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+
+                <BoxView
+                    HeightRequest="2"
+                    Color="#F2C94C"
+                    HorizontalOptions="Start"
+                    WidthRequest="65"/>
+
+                <Label
+                    Text="Conteúdo educativo • Lume"
+                    FontSize="12"
+                    TextColor="#8A8FB5"/>
+
+                <Label
+                    x:Name="ConteudoLabel"
+                    FontSize="16"
+                    TextColor="#E5E5EF"
+                    LineHeight="1.4"
+                    LineBreakMode="WordWrap"/>
+
+                <Border
+                    BackgroundColor="#121424"
+                    Stroke="#2A2D3E"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="16">
+
+                    <Label
+                        Text="Dica do Lume: use o que aprendeu para refletir sobre seus hábitos e planejar seus próximos passos financeiros."
+                        FontSize="14"
+                        TextColor="#F2C94C"
+                        LineBreakMode="WordWrap"/>
+
+                </Border>
+
+                <Button
+                    Text="Voltar aos artigos"
+                    BackgroundColor="#F2C94C"
+                    TextColor="#070812"
+                    FontAttributes="Bold"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    Clicked="Voltar_Clicked"/>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

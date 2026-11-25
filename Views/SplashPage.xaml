@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TCCLume.Views.SplashPage"
+             Title="SplashPage"
+             BackgroundColor="#070812"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="*,Auto,*">
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Spacing="12">
+
+            <!-- LOGO -->
+            <Image
+                x:Name="LogoImage"
+                Source="lume.png"
+                HeightRequest="160"
+                WidthRequest="160"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"
+                Opacity="0"/>
+
+            <!-- NOME -->
+            <Label
+                x:Name="AppName"
+                Text="Lume"
+                FontSize="38"
+                FontAttributes="Bold"
+                TextColor="#F2C94C"
+                HorizontalTextAlignment="Center"
+                Opacity="0"/>
+
+            <!-- FRASE -->
+            <Label
+                x:Name="Subtitle"
+                Text="Ilumine suas escolhas financeiras."
+                FontSize="13"
+                TextColor="#8A8FB5"
+                HorizontalTextAlignment="Center"
+                Opacity="0"/>
+
+        </VerticalStackLayout>
+
+        <Label
+            Grid.Row="2"
+            Text="SUA VIDA FINANCEIRA, COM MAIS CLAREZA."
+            FontSize="9"
+            TextColor="#555A78"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Margin="0,0,0,35"/>
+
+    </Grid>
+
+</ContentPage>

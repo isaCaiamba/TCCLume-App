@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TCCLume.Views.BlogPage"
+             BackgroundColor="#070812"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- CABEÇALHO -->
+        <Grid
+            Grid.Row="0"
+            Padding="20,15"
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="15">
+
+            <Button
+                Text="☰"
+                FontSize="26"
+                TextColor="#F2C94C"
+                BackgroundColor="Transparent"
+                Padding="0"
+                Clicked="MenuButton_Clicked"
+                VerticalOptions="Center"/>
+
+            <VerticalStackLayout
+                Grid.Column="1"
+                Spacing="3"
+                VerticalOptions="Center">
+
+                <Label
+                    Text="Blog Lume"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    TextColor="#F2C94C"/>
+
+                <Label
+                    Text="Aprenda a cuidar melhor do seu dinheiro."
+                    FontSize="12"
+                    TextColor="#8A8FB5"/>
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <!-- CONTEÚDO -->
+        <ScrollView Grid.Row="1">
+
+            <VerticalStackLayout
+                Padding="20,5,20,30"
+                Spacing="20">
+
+                <!-- BUSCA -->
+                <Border
+                    BackgroundColor="#121424"
+                    Stroke="#2A2D3E"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="12,0">
+
+                    <Entry
+                        x:Name="SearchEntry"
+                        Placeholder="Buscar artigos..."
+                        PlaceholderColor="#8A8FB5"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        ClearButtonVisibility="WhileEditing"
+                        TextChanged="SearchEntry_TextChanged"/>
+                </Border>
+
+                <!-- DESTAQUE -->
+                <Border
+                    BackgroundColor="#121424"
+                    Stroke="#2A2D3E"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="18">
+
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label
+                            Text="ARTIGO EM DESTAQUE"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#F2C94C"/>
+
+                        <Label
+                            Text="Seu dinheiro, suas escolhas"
+                            FontSize="23"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+
+                        <Label
+                            Text="Descubra como pequenas mudanças podem ajudar você a ter mais controle financeiro."
+                            FontSize="14"
+                            TextColor="#B0B3C8"
+                            LineBreakMode="WordWrap"/>
+
+                        <Button
+                            Text="Ler artigo"
+                            BackgroundColor="#F2C94C"
+                            TextColor="#070812"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="48"
+                            Clicked="Destaque_Clicked"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <!-- CATEGORIAS -->
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Explore os conteúdos"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="White"/>
+
+                    <ScrollView
+                        Orientation="Horizontal"
+                        HorizontalScrollBarVisibility="Never">
+
+                        <HorizontalStackLayout 
+                            Spacing="8"
+                            x:Name="CategoriasContainer">
+
+                            <Button
+                                Text="Todos"
+                                CommandParameter="Todos"
+                                Clicked="Categoria_Clicked"
+                                BackgroundColor="#F2C94C"
+                                TextColor="#070812"
+                                CornerRadius="18"
+                                Padding="16,8"/>
+
+                            <Button
+                                Text="Organização"
+                                CommandParameter="Organização"
+                                Clicked="Categoria_Clicked"
+                                BackgroundColor="#121424"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Padding="16,8"/>
+
+                            <Button
+                                Text="Economia"
+                                CommandParameter="Economia"
+                                Clicked="Categoria_Clicked"
+                                BackgroundColor="#121424"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Padding="16,8"/>
+
+                            <Button
+                                Text="Metas"
+                                CommandParameter="Metas"
+                                Clicked="Categoria_Clicked"
+                                BackgroundColor="#121424"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Padding="16,8"/>
+
+                            <Button
+                                Text="Consumo consciente"
+                                CommandParameter="Consumo consciente"
+                                Clicked="Categoria_Clicked"
+                                BackgroundColor="#121424"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Padding="16,8"/>
+
+                        </HorizontalStackLayout>
+
+                    </ScrollView>
+
+                </VerticalStackLayout>
+
+                <!-- LISTA DE ARTIGOS -->
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        Text="Artigos para você"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="White"/>
+
+                    <VerticalStackLayout
+                        x:Name="ArticlesContainer"
+                        Spacing="12"/>
+
+                    <Label
+                        x:Name="EmptyLabel"
+                        Text="Nenhum artigo encontrado."
+                        FontSize="14"
+                        TextColor="#8A8FB5"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="False"/>
+
+                </VerticalStackLayout>
+
+                <Label
+                    Text="Lume • Educação financeira para o dia a dia"
+                    FontSize="11"
+                    TextColor="#8A8FB5"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,10,0,0"/>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

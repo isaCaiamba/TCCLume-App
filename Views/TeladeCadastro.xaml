@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TCCLume.Views.TeladeCadastro"
+    BackgroundColor="#070812"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="30,60"
+            Spacing="18">
+
+            <!-- MASCOTE -->
+            <Image
+                x:Name="MascotImage"
+                Source="lume_mascote.png"
+                HeightRequest="140"
+                WidthRequest="140"
+                HorizontalOptions="Center"
+                Margin="0,0,0,-10"/>
+
+            <!-- FRASE -->
+            <Label
+                x:Name="MascotMessage"
+                Text="Olá, eu sou o Lume! Vamos criar sua conta ✨"
+                FontSize="20"
+                TextColor="#F2C94C"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Margin="20,0,20,10"/>
+
+            <!-- NOME -->
+            <Entry
+                x:Name="NameEntry"
+                Placeholder="Nome"
+                TextColor="White"
+                PlaceholderColor="#8A8FB5"
+                BackgroundColor="#121424"/>
+
+            <!-- EMAIL -->
+            <Entry
+                x:Name="EmailEntry"
+                Placeholder="E-mail"
+                Keyboard="Email"
+                TextColor="White"
+                PlaceholderColor="#8A8FB5"
+                BackgroundColor="#121424"/>
+
+            <!-- SENHA -->
+                <Grid>
+
+                    <Entry
+                        x:Name="PasswordEntry"
+                        Placeholder="Senha"
+                        IsPassword="True"
+                        BackgroundColor="#121424"
+                        TextColor="White"
+                        PlaceholderColor="#8A8FB5"
+                        TextChanged="PasswordEntry_TextChanged"/>
+
+                    <ImageButton
+                        x:Name="PasswordVisibilityButton"
+                        Grid.Column="1"
+                        Source="eye.png"
+                        BackgroundColor="Transparent"
+                        HeightRequest="36"
+                        WidthRequest="45"
+                        Margin="1812,0,0,0"
+                        Clicked="PasswordVisibilityButton_Clicked"/>
+
+                </Grid>
+
+            <!-- INDICADOR DE FORÇA -->
+            <HorizontalStackLayout
+                x:Name="StrengthBarsContainer"
+                Spacing="5"
+                IsVisible="False">
+
+                <BoxView
+                    x:Name="Bar1"
+                    HeightRequest="6"
+                    WidthRequest="60"
+                    CornerRadius="3"
+                    Color="#2A2A2A"/>
+
+                <BoxView
+                    x:Name="Bar2"
+                    HeightRequest="6"
+                    WidthRequest="60"
+                    CornerRadius="3"
+                    Color="#2A2A2A"/>
+
+                <BoxView
+                    x:Name="Bar3"
+                    HeightRequest="6"
+                    WidthRequest="60"
+                    CornerRadius="3"
+                    Color="#2A2A2A"/>
+
+                <BoxView
+                    x:Name="Bar4"
+                    HeightRequest="6"
+                    WidthRequest="60"
+                    CornerRadius="3"
+                    Color="#2A2A2A"/>
+
+            </HorizontalStackLayout>
+
+            <!-- TEXTO DA FORÇA -->
+            <Label
+                x:Name="PasswordStrengthLabel"
+                Text=""
+                FontSize="10"
+                Margin="0,-10,0,0"
+                TextColor="Gray"
+                IsVisible="False"/>
+
+            <!-- REQUISITOS -->
+            <VerticalStackLayout
+                x:Name="RequirementsContainer"
+                Spacing="1"
+                Margin="5,-8,0,0"
+                IsVisible="False">
+
+                <Label
+                    x:Name="LengthRequirement"
+                    Text="❌ Mínimo de 8 caracteres"
+                    FontSize="10"
+                    TextColor="Gray"/>
+
+                <Label
+                    x:Name="NumberRequirement"
+                    Text="❌ Ter número"
+                    FontSize="10"
+                    TextColor="Gray"/>
+
+                <Label
+                    x:Name="UpperRequirement"
+                    Text="❌ Letra maiúscula"
+                    FontSize="10"
+                    TextColor="Gray"/>
+
+                <Label
+                    x:Name="SpecialRequirement"
+                    Text="❌ Caractere especial"
+                    FontSize="10"
+                    TextColor="Gray"/>
+
+            </VerticalStackLayout>
+
+            <!-- CONFIRMAR SENHA -->
+                <Grid>
+
+                    <Entry
+                        x:Name="ConfirmPasswordEntry"
+                        Placeholder="Confirmar senha"
+                        IsPassword="True"
+                        BackgroundColor="#121424"
+                        TextColor="White"
+                        PlaceholderColor="#8A8FB5"
+                        TextChanged="ConfirmPasswordEntry_TextChanged"/>
+
+                    <ImageButton
+                        x:Name="ConfirmPasswordVisibilityButton"
+                        Grid.Column="1"
+                        Source="eye.png"
+                        BackgroundColor="Transparent"
+                        HeightRequest="36"
+                        WidthRequest="45"
+                        Margin="1812,0,0,0"
+                        Clicked="ConfirmPasswordVisibilityButton_Clicked"/>
+
+                </Grid>
+
+            <!-- STATUS DA SENHA -->
+            <Label
+                x:Name="PasswordMatchLabel"
+                Text=""
+                FontSize="13"
+                TextColor="Red"/>
+
+            <!-- BOTÃO CADASTRAR -->
+            <Button
+                Text="Cadastrar"
+                HeightRequest="60"
+                CornerRadius="18"
+                BackgroundColor="#F2C94C"
+                TextColor="Black"
+                FontAttributes="Bold"
+                Clicked="OnRegisterClicked"/>
+
+            <!-- VOLTAR -->
+            <Button
+                Text="Voltar"
+                BackgroundColor="Transparent"
+                TextColor="#F2C94C"
+                Clicked="OnBackClicked"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

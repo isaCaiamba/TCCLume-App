@@ -1,0 +1,23 @@
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Compilação
+bin/
+obj/
+
+# Android
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Sistema operacional
+Thumbs.db
+.DS_Store

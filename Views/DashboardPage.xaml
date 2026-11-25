@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TCCLume.Views.DashboardPage"
+    BackgroundColor="#070812"
+    Title="Dashboard">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="18">
+
+            <!-- ===================================== -->
+            <!-- TOPO -->
+            <!-- ===================================== -->
+
+            <Grid
+                ColumnDefinitions="Auto,*"
+                Margin="0,10,0,0">
+
+                <Button
+                    Text="☰"
+                    FontSize="28"
+                    BackgroundColor="Transparent"
+                    TextColor="#F2C94C"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Clicked="MenuButton_Clicked"/>
+
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    Spacing="2"
+                    VerticalOptions="Center">
+
+                    <Label
+                        x:Name="WelcomeLabel"
+                        Text="Olá! 👋"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="End"/>
+
+                    <Label
+                        Text="Veja como estão suas finanças"
+                        FontSize="13"
+                        TextColor="#A8AFB5"
+                        HorizontalOptions="End"/>
+
+                </VerticalStackLayout>
+
+            </Grid>
+
+
+            <!-- ===================================== -->
+            <!-- FILTRO DE DATAS -->
+            <!-- ===================================== -->
+
+            <Frame
+                BackgroundColor="#121424"
+                BorderColor="#2A2D3E"
+                CornerRadius="16"
+                Padding="14">
+
+                <VerticalStackLayout
+                    Spacing="10">
+
+                    <!-- TÍTULO -->
+
+                    <Label
+                        Text="📅 Filtrar período"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="White"/>
+
+
+                    <!-- DATAS -->
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <!-- DATA INICIAL -->
+
+                        <VerticalStackLayout
+                            Spacing="3">
+
+                            <Label
+                                Text="Data inicial"
+                                FontSize="11"
+                                TextColor="#A8AFB5"/>
+
+                            <DatePicker
+                                x:Name="StartDatePicker"
+                                Format="dd/MM/yyyy"
+                                FontSize="13"
+                                TextColor="White"
+                                BackgroundColor="#1A1C2B"
+                                HeightRequest="42"/>
+
+                        </VerticalStackLayout>
+
+
+                        <!-- DATA FINAL -->
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="3">
+
+                            <Label
+                                Text="Data final"
+                                FontSize="11"
+                                TextColor="#A8AFB5"/>
+
+                            <DatePicker
+                                x:Name="EndDatePicker"
+                                Format="dd/MM/yyyy"
+                                FontSize="13"
+                                TextColor="White"
+                                BackgroundColor="#1A1C2B"
+                                HeightRequest="42"/>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+
+                    <!-- PERÍODOS RÁPIDOS -->
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="7">
+
+                        <Button
+                            Text="Hoje"
+                            FontSize="11"
+                            HeightRequest="36"
+                            Padding="5"
+                            BackgroundColor="#1A1C2B"
+                            TextColor="#F2C94C"
+                            CornerRadius="8"
+                            Clicked="TodayFilter_Clicked"/>
+
+                        <Button
+                            Grid.Column="1"
+                            Text="7 dias"
+                            FontSize="11"
+                            HeightRequest="36"
+                            Padding="5"
+                            BackgroundColor="#1A1C2B"
+                            TextColor="#F2C94C"
+                            CornerRadius="8"
+                            Clicked="SevenDaysFilter_Clicked"/>
+
+                        <Button
+                            Grid.Column="2"
+                            Text="Este mês"
+                            FontSize="11"
+                            HeightRequest="36"
+                            Padding="5"
+                            BackgroundColor="#1A1C2B"
+                            TextColor="#F2C94C"
+                            CornerRadius="8"
+                            Clicked="MonthFilter_Clicked"/>
+
+                    </Grid>
+
+
+                    <!-- BOTÕES -->
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="8">
+
+                        <Button
+                            Text="Aplicar filtro"
+                            FontSize="12"
+                            HeightRequest="38"
+                            Padding="5"
+                            BackgroundColor="#F2C94C"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            CornerRadius="8"
+                            Clicked="ApplyFilter_Clicked"/>
+
+                        <Button
+                            Grid.Column="1"
+                            Text="Limpar"
+                            FontSize="12"
+                            HeightRequest="38"
+                            Padding="5"
+                            BackgroundColor="#2A2D3E"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Clicked="ClearFilter_Clicked"/>
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+
+            <!-- ===================================== -->
+            <!-- SALDO TOTAL -->
+            <!-- ===================================== -->
+
+            <Frame
+                BackgroundColor="#121424"
+                BorderColor="#2A2D3E"
+                CornerRadius="20"
+                Padding="22">
+
+                <VerticalStackLayout
+                    Spacing="8">
+
+                    <Label
+                        Text="SALDO TOTAL"
+                        FontSize="13"
+                        FontAttributes="Bold"
+                        TextColor="#A8AFB5"/>
+
+                    <Label
+                        x:Name="TotalBalanceLabel"
+                        Text="R$ 0,00"
+                        FontSize="34"
+                        FontAttributes="Bold"
+                        TextColor="#F2C94C"/>
+
+                    <Label
+                        Text="Considerando todas as suas movimentações."
+                        FontSize="13"
+                        TextColor="#A8AFB5"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+
+            <!-- ===================================== -->
+            <!-- SALDO DO PERÍODO -->
+            <!-- ===================================== -->
+
+            <Frame
+                BackgroundColor="#121424"
+                BorderColor="#2A2D3E"
+                CornerRadius="20"
+                Padding="22">
+
+                <VerticalStackLayout
+                    Spacing="8">
+
+                    <Label
+                        Text="SALDO DO PERÍODO"
+                        FontSize="13"
+                        FontAttributes="Bold"
+                        TextColor="#A8AFB5"/>
+
+                    <Label
+                        x:Name="BalanceLabel"
+                        Text="R$ 0,00"
+                        FontSize="34"
+                        FontAttributes="Bold"
+                        TextColor="#F2C94C"/>
+
+                    <Label
+                        x:Name="BalanceStatusLabel"
+                        Text="Suas finanças estão equilibradas."
+                        FontSize="13"
+                        TextColor="#A8AFB5"/>
+
+                    <Label
+                        x:Name="MonthLabel"
+                        Text="Resumo do período"
+                        FontSize="12"
+                        TextColor="#A8AFB5"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+
+            <!-- ===================================== -->
+            <!-- RECEITAS E DESPESAS -->
+            <!-- ===================================== -->
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <!-- RECEITAS -->
+
+                <Frame
+                    BackgroundColor="#121424"
+                    BorderColor="#2A2D3E"
+                    CornerRadius="18"
+                    Padding="18">
+
+                    <VerticalStackLayout
+                        Spacing="6">
+
+                        <Label
+                            Text="RECEITAS"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#F2C94C"/>
+
+                        <Label
+                            x:Name="IncomeLabel"
+                            Text="R$ 0,00"
+                            FontSize="21"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- DESPESAS -->
+
+                <Frame
+                    Grid.Column="1"
+                    BackgroundColor="#121424"
+                    BorderColor="#2A2D3E"
+                    CornerRadius="18"
+                    Padding="18">
+
+                    <VerticalStackLayout
+                        Spacing="6">
+
+                        <Label
+                            Text="DESPESAS"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#FF5B5B"/>
+
+                        <Label
+                            x:Name="ExpenseLabel"
+                            Text="R$ 0,00"
+                            FontSize="21"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </Grid>
+
+            <!-- ===================================== -->
+            <!-- GASTOS POR CATEGORIA -->
+            <!-- ===================================== -->
+
+            <Frame
+                BackgroundColor="#121424"
+                BorderColor="#2A2D3E"
+                CornerRadius="20"
+                Padding="20">
+
+                <VerticalStackLayout
+                    Spacing="15">
+
+                    <Label
+                        Text="Gastos por categoria"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="White"/>
+
+                    <Label
+                        Text="Veja onde seu dinheiro está sendo utilizado."
+                        FontSize="13"
+                        TextColor="#A8AFB5"/>
+
+                    <VerticalStackLayout
+                        x:Name="CategoriesLayout"
+                        Spacing="12"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+
+            <!-- ===================================== -->
+            <!-- INDICADORES -->
+            <!-- ===================================== -->
+
+            <Label
+                Text="Indicadores"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="White"
+                Margin="0,5,0,0"/>
+
+
+            <Grid
+                ColumnDefinitions="*,*"
+                RowDefinitions="Auto,Auto"
+                ColumnSpacing="12"
+                RowSpacing="12">
+
+                <!-- ECONOMIA -->
+
+                <Frame
+                    BackgroundColor="#121424"
+                    BorderColor="#2A2D3E"
+                    CornerRadius="18"
+                    Padding="16">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="ECONOMIA"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#A8AFB5"/>
+
+                        <Label
+                            x:Name="SavingsLabel"
+                            Text="R$ 0,00"
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="#F2C94C"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- MAIOR GASTO -->
+
+                <Frame
+                    Grid.Column="1"
+                    BackgroundColor="#121424"
+                    BorderColor="#2A2D3E"
+                    CornerRadius="18"
+                    Padding="16">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="MAIOR GASTO"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#A8AFB5"/>
+
+                        <Label
+                            x:Name="BiggestExpenseLabel"
+                            Text="Nenhum"
+                            FontSize="17"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- LANÇAMENTOS -->
+
+                <Frame
+                    Grid.Row="1"
+                    BackgroundColor="#121424"
+                    BorderColor="#2A2D3E"
+                    CornerRadius="18"
+                    Padding="16">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="LANÇAMENTOS"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#A8AFB5"/>
+
+                        <Label
+                            x:Name="TransactionsCountLabel"
+                            Text="0"
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- PERCENTUAL -->
+
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="#121424"
+                    BorderColor="#2A2D3E"
+                    CornerRadius="18"
+                    Padding="16">
+
+                    <VerticalStackLayout
+                        Spacing="5">
+
+                        <Label
+                            Text="RENDA UTILIZADA"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            TextColor="#A8AFB5"/>
+
+                        <Label
+                            x:Name="PercentageLabel"
+                            Text="0%"
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </Grid>
+
+
+            <!-- ===================================== -->
+            <!-- DICA DO LUME -->
+            <!-- ===================================== -->
+
+            <Frame
+                BackgroundColor="#121424"
+                BorderColor="#2A2D3E"
+                CornerRadius="20"
+                Padding="20">
+
+                <VerticalStackLayout
+                    Spacing="8">
+
+                    <Label
+                        Text="✨ Lume"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#F2C94C"/>
+
+                    <Label
+                        x:Name="LumeInsightLabel"
+                        Text="Estou analisando suas movimentações financeiras..."
+                        FontSize="14"
+                        TextColor="White"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
